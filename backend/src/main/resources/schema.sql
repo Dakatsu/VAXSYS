@@ -12,7 +12,7 @@ CREATE TABLE account
     last_name  VARCHAR(50) NOT NULL,
     password   VARCHAR(50) NOT NULL,
     email      VARCHAR(150),
-    role_id    INTEGER REFERENCES role (id) ON DELETE CASCADE
+    role_id    INTEGER REFERENCES role (id) ON DELETE CASCADE,
     enabled    BOOLEAN
 );
 
