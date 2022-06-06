@@ -10,7 +10,7 @@ CREATE TABLE account
     username   VARCHAR(50) NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name  VARCHAR(50) NOT NULL,
-    password   VARCHAR(50) NOT NULL,
+    password   VARCHAR(500) NOT NULL,
     email      VARCHAR(150),
     role_id    INTEGER REFERENCES role (id) ON DELETE CASCADE,
     enabled    BOOLEAN
