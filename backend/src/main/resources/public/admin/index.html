@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../styles.css">
+        <title>VAXSYS Admin Portal</title>
+    </head>
+    <body>
+        <!-- Scripts for functions. -->
+        <script type="text/javascript" src="../scripts.js"></script>
+        <!-- Start of Web Page -->
+        <h1>VAXSYS</h1>
+        <h2>Admin Portal</h2>
+        <label for="accFirstName">First Name:</label><br>
+        <input type="text" id="accFirstName" name="accFirstName"><br>
+        <label for="accLastName">Last Name:</label><br>
+        <input type="text" id="accLastName" name="accLastName"><br>
+        <label for="accEmail">E-mail:</label><br>
+        <input type="email" id="accEmail" name="accEmail"><br>
+        <label for="accPassword">Password:</label><br>
+        <input type="password" id="accPassword" name="accPassword"><br>
+        <!-- Radio Buttons for Role -->
+        <input type="radio" id="accAdmin" name="role" value="ADMIN">
+        <label for="accAdmin">Admin</label>
+        <input type="radio" id="accNurse" name="role" value="NURSE">
+        <label for="accNurse">Nurse</label>
+        <input type="radio" id="accVendor" name="role" value="VENDOR">
+        <label for="accVendor">Vendor</label><br>
+        <!-- Button to submit account and a section to display results -->
+        <button onclick="submitAccount('/admin/account', 'acc', 'accOutput')">Add Account</button><br>
+        <p id="accOutput"></p><br>
+    </body>
+</html>
