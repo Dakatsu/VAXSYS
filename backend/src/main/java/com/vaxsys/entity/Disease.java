@@ -1,6 +1,7 @@
 package com.vaxsys.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "disease")
@@ -16,6 +17,9 @@ public class Disease {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy="disease")
+    private Set<Vaccine> vaccines;
 
     public Disease() {
     }
@@ -43,6 +47,10 @@ public class Disease {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Vaccine> getVaccines() {
+        return vaccines;
     }
 
 }

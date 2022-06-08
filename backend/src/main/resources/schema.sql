@@ -30,3 +30,6 @@ CREATE TABLE disease
     description VARCHAR(255),
     CONSTRAINT pk_disease PRIMARY KEY (id)
 );
+
+ALTER TABLE vaccine
+    ADD disease_id INTEGER REFERENCES disease (id) ON DELETE CASCADE;

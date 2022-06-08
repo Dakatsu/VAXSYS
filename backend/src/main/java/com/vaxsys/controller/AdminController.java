@@ -54,7 +54,7 @@ public class AdminController {
 
     @PostMapping("/vaccine")
     public VaccineDto createVaccine(@RequestBody VaccineCreationDto vaccineCreationDto) {
-        Vaccine vaccine = new Vaccine(vaccineCreationDto.getName(), vaccineCreationDto.getDescription());
+        Vaccine vaccine = new Vaccine(vaccineCreationDto.getName(), vaccineCreationDto.getDescription(), vaccineCreationDto.getDisease());
         return VaccineMapper.INSTANCE.map(vaccineRepository.save(vaccine));
     }
 
