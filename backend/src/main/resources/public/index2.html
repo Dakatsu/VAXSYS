@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>VAXSYS</title>
+    </head>
+    <body>
+        <!-- Login Portion -->
+        <h1 style="color:darkred">VAXSYS Login Page</h1>
+        <label for="email">E-mail:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password">
+        <button onclick="sendLogin()">Log In</button>
+        <p id="result" style="color:green"></p><br>
+        <!-- Add Account Portion -->
+        <h2 style="color:darkred">Admin: Create Account</h2>
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName"><br>
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName"><br>
+        <label for="emailX">E-mail:</label><br>
+        <input type="email" id="emailX" name="emailX"><br>
+        <label for="passwordX">Password:</label><br>
+        <input type="password" id="passwordX" name="passwordX">
+        <label for="role">Role:</label><br>
+        <select name="role" id="role">
+            <option value="NURSE">Nurse</option>
+            <option value="VENDOR">Vendor</option>
+        </select>
+        <button onclick="addAccount()">Add Account</button>
+        <p id="resultX" style="color:green"></p>
+        <!-- Scripts for functions. -->
+        <script type="text/javascript" src="scripts.js"></script>
+    </body>
+</html>
