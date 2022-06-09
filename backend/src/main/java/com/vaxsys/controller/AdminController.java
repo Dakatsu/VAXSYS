@@ -16,9 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -88,41 +85,6 @@ public class AdminController {
         Disease disease = new Disease(diseaseCreationDto.getName(), diseaseCreationDto.getDescription());
         return DiseaseMapper.INSTANCE.map(diseaseRepository.save(disease));
     }
-
-    @GetMapping("/disease/{name}")
-    public DiseaseDto findDiseaseByName(@PathVariable String name) {
-        return DiseaseMapper.INSTANCE.map(diseaseRepository.findByName(name));
-    }
-
-    @GetMapping("/disease")
-    public Page<DiseaseDto> findAllDiseases(Pageable pageable) {
-        Page<Disease> diseasePage = diseaseRepository.findAll(pageable);
-        return new PageImpl<>(DiseaseMapper.INSTANCE.map(diseasePage.getContent()), pageable, diseasePage.getTotalElements());
-    }
-
-    @PostMapping("/vaccine")
-    public VaccineDto createVaccine(@RequestBody VaccineCreationDto vaccineCreationDto) {
-        Vaccine vaccine = new Vaccine(vaccineCreationDto.getName(), vaccineCreationDto.getDescription(), vaccineCreationDto.getInstruction(), vaccineCreationDto.getDoseRequired(),  vaccineCreationDto.getDisease());
-        return VaccineMapper.INSTANCE.map(vaccineRepository.save(vaccine));
-    }
-
-    @GetMapping("/vaccine/{name}")
-    public VaccineDto findVaccineByName(@PathVariable String name) {
-        return VaccineMapper.INSTANCE.map(vaccineRepository.findByName(name));
-    }
-
-    @GetMapping("/vaccine")
-    public Page<VaccineDto> findAllVaccines(Pageable pageable) {
-        Page<Vaccine> vaccinePage = vaccineRepository.findAll(pageable);
-        return new PageImpl<>(VaccineMapper.INSTANCE.map(vaccinePage.getContent()), pageable, vaccinePage.getTotalElements());
-    }
-
-    @PostMapping("/disease")
-    public DiseaseDto createDisease(@RequestBody DiseaseCreationDto diseaseCreationDto) {
-        Disease disease = new Disease(diseaseCreationDto.getName(), diseaseCreationDto.getDescription());
-        return DiseaseMapper.INSTANCE.map(diseaseRepository.save(disease));
-    }
-
     @GetMapping("/disease/{name}")
     public DiseaseDto findDiseaseByName(@PathVariable String name) {
         return DiseaseMapper.INSTANCE.map(diseaseRepository.findByName(name));
