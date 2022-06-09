@@ -7,6 +7,7 @@ import java.time.LocalDate;
 @Table(name = "appointment")
 public class Appointment {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")

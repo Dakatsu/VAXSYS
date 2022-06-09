@@ -8,6 +8,7 @@ import com.vaxsys.entity.Disease;
 import com.vaxsys.entity.Vaccine;
 import com.vaxsys.mapper.DiseaseMapper;
 import com.vaxsys.mapper.VaccineMapper;
+import com.vaxsys.service.VaccineService;
 import com.vaxsys.service.DiseaseService;
 import com.vaxsys.service.VaccineService;
 import org.springframework.data.domain.Page;

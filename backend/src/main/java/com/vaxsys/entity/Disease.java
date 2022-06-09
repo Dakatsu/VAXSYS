@@ -51,6 +51,7 @@ public class Disease {
         this.name = name;
     }
 
+
     public Set<Vaccine> getVaccines() {
         return vaccines;
     }

@@ -1,35 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>VAXSYS</title>
-    </head>
-    <body>
-        <!-- Login Portion -->
-        <h1 style="color:darkred">VAXSYS Login Page</h1>
-        <label for="email">E-mail:</label><br>
-        <input type="email" id="email" name="email"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password">
-        <button onclick="sendLogin()">Log In</button>
-        <p id="result" style="color:green"></p><br>
-        <!-- Add Account Portion -->
-        <h2 style="color:darkred">Admin: Create Account</h2>
-        <label for="firstName">First Name:</label><br>
-        <input type="text" id="firstName" name="firstName"><br>
-        <label for="lastName">Last Name:</label><br>
-        <input type="text" id="lastName" name="lastName"><br>
-        <label for="emailX">E-mail:</label><br>
-        <input type="email" id="emailX" name="emailX"><br>
-        <label for="passwordX">Password:</label><br>
-        <input type="password" id="passwordX" name="passwordX">
-        <label for="role">Role:</label><br>
-        <select name="role" id="role">
-            <option value="NURSE">Nurse</option>
-            <option value="VENDOR">Vendor</option>
-        </select>
-        <button onclick="addAccount()">Add Account</button>
-        <p id="resultX" style="color:green"></p>
-        <!-- Scripts for functions. -->
-        <script type="text/javascript" src="scripts.js"></script>
-    </body>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>VAXSYS</title>
+</head>
+<body>
+<!-- Scripts for functions. -->
+<script type="text/javascript" src="scripts.js"></script>
+<h1>VAXSYS Login Page</h1>
+<table>
+    <tr>
+        <th>
+            <h2>Log In</h2>
+        </th>
+        <th>
+            <h2>New Patient Account</h2>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <label for="loginEmail">E-mail:</label><br>
+            <input type="email" id="loginEmail" name="loginEmail"><br>
+            <label for="loginPassword">Password:</label><br>
+            <input type="password" id="loginPassword" name="loginPassword"><br>
+            <button onclick="submitLogin('/home/login', 'login', 'loginOutput')">Log In</button><br>
+            <p id="loginOutput"></p><br>
+        </th>
+        <th>
+            <label for="registerFirstName">First Name:</label><br>
+            <input type="text" id="registerFirstName" name="registerFirstName"><br>
+            <label for="registerLastName">Last Name:</label><br>
+            <input type="text" id="registerLastName" name="registerLastName"><br>
+            <label for="registerEmail">E-mail:</label><br>
+            <input type="email" id="registerEmail" name="registerEmail"><br>
+            <label for="registerPassword">Password:</label><br>
+            <input type="password" id="registerPassword" name="registerPassword"><br>
+            <button onclick="submitRegistration('/home/register', 'register', 'registerOutput')">Sign Up</button><br>
+            <p id="registerOutput"></p><br>
+        </th>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th><a href="/admin/index.html">Admin</a></th>
+        <th><a href="/nurse/index.html">Nurse</a></th>
+        <th><a href="/patient/index.html">Patient</a></th>
+        <th><a href="/vendor/index.html">Vendor</a></th>
+    </tr>
+</table>
+</body>
 </html>
