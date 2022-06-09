@@ -77,8 +77,15 @@ public class AdminController {
     }
 
     @PostMapping("/disease")
-    public DiseaseDto createDisease(@RequestBody DiseaseCreationDto diseaseCreationDto) {
-        return DiseaseMapper.INSTANCE.map(diseaseService.createDisease(diseaseCreationDto));
+    public DiseaseDto createDisease(@RequestBody DiseaseCreationDto diseaseCreationDto, HttpServletResponse response) throws IOException {
+        Disease disease;
+        try {
+            disease = diseaseService.createDisease(diseaseCreationDto);
+        } catch (Exception e) {
+            response.sendError(HttpStatus.FORBIDDEN.value(), "Disease with name " + diseaseCreationDto.getName() + " already exists");
+            return null;
+        }
+        return DiseaseMapper.INSTANCE.map(disease);
     }
 
     @GetMapping("/disease/{name}")
