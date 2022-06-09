@@ -23,13 +23,28 @@ public class Appointment {
     private Integer vaccineId;
 
     @Column(name = "time")
-    private LocalDate time;
+    private String time;
 
-    public LocalDate getTime() {
+    @Column(name = "status")
+    private Integer status;
+
+    public Appointment() {
+
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -55,5 +70,21 @@ public class Appointment {
 
     public void setVaccineCenterId(Integer vaccineCenterId) {
         this.vaccineCenterId = vaccineCenterId;
+    }
+
+    public Appointment(Integer vaccineCenterId, Integer patientId, Integer vaccineId, String time, Integer status) {
+        this.vaccineCenterId = vaccineCenterId;
+        this.patientId = patientId;
+        this.vaccineId = vaccineId;
+        this.time = time;
+        this.status = status;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

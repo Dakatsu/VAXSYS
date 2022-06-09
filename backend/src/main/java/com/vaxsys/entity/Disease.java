@@ -7,8 +7,10 @@ import java.util.Set;
 @Entity
 @Table(name = "disease")
 public class Disease {
+
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "serial")
     private Integer id;
 
     @Column(name = "name")
@@ -17,8 +19,21 @@ public class Disease {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "diseases")
-    private Set<Account> users = new HashSet<>();
+
+    @OneToMany(mappedBy="disease")
+    private Set<Vaccine> vaccines;
+
+    public Disease() {
+    }
+
+    public Disease(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Integer getId() {
+        return id;
+    }
 
     public String getDescription() {
         return description;
@@ -36,11 +51,9 @@ public class Disease {
         this.name = name;
     }
 
-    public Integer getId() {
-        return id;
+
+    public Set<Vaccine> getVaccines() {
+        return vaccines;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

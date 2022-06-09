@@ -32,12 +32,6 @@ public class Account {
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
-    @ManyToMany
-    @JoinTable(name = "patient_disease",
-        joinColumns = {@JoinColumn(name = "patient_id", referencedColumnName = "id")},
-        inverseJoinColumns = {@JoinColumn(name = "disease_id", referencedColumnName = "id")}
-    )
-    private Set<Disease> diseases = new HashSet<Disease>();
 
     public Integer getId() {
         return id;
