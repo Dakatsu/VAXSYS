@@ -19,6 +19,7 @@ import com.vaxsys.repository.VaccineCenterRepository;
 import com.vaxsys.repository.DiseaseRepository;
 import com.vaxsys.repository.VaccineRepository;
 import com.vaxsys.service.AppointmentService;
+import com.vaxsys.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -65,6 +66,11 @@ public class PatientController {
     @GetMapping("/vaccine/findAll")
     public List<VaccineDto> findAllVaccine(){
         return VaccineMapper.INSTANCE.map(vaccineRepository.findAll());
+    }
+
+    @GetMapping("/vaccine/findAvailableVaccines")
+    public List<VaccineDto> findAvailableVaccines(){
+        return VaccineMapper.INSTANCE.map(vaccineRepository.findAvailableVaccines(Util.getCurrentUser().getAccountId()));
     }
 
     @GetMapping("/vaccineCenter/findAll")
