@@ -41,20 +41,15 @@ public class AdminController {
     private final AccountService accountService;
     private final VaccineService vaccineService;
     private final DiseaseService diseaseService;
-    private final VaccineService vaccineService;
     private final VaccineCenterService vaccineCenterService;
 
     @Autowired
     private AppointmentService appointmentService;
 
-    public AdminController(AccountService accountService, VaccineService vaccineService, DiseaseService diseaseService) {
-    public AdminController(AccountService accountService,
-                           VaccineService vaccineService,
-                           VaccineCenterService vaccineCenterService) {
+    public AdminController(AccountService accountService, VaccineService vaccineService, DiseaseService diseaseService, VaccineCenterService vaccineCenterService) {
         this.accountService = accountService;
         this.vaccineService = vaccineService;
         this.diseaseService = diseaseService;
-        this.vaccineService = vaccineService;
         this.vaccineCenterService = vaccineCenterService;
     }
 
