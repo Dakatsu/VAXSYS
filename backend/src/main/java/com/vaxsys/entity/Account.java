@@ -1,13 +1,8 @@
 package com.vaxsys.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "account")
@@ -36,6 +31,13 @@ public class Account {
     @OneToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
+
+    @ManyToMany
+    @JoinTable(name = "patient_disease",
+        joinColumns = {@JoinColumn(name = "patient_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "disease_id", referencedColumnName = "id")}
+    )
+    private Set<Disease> diseases = new HashSet<Disease>();
 
     public Integer getId() {
         return id;
