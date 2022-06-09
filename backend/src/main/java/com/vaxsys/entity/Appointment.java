@@ -7,7 +7,6 @@ import java.time.LocalDate;
 @Table(name = "appointment")
 public class Appointment {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "serial")
@@ -23,13 +22,25 @@ public class Appointment {
     private Integer vaccineId;
 
     @Column(name = "time")
-    private LocalDate time;
+    private String time;
 
-    public LocalDate getTime() {
+    public Appointment() {
+
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalDate time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -55,5 +66,12 @@ public class Appointment {
 
     public void setVaccineCenterId(Integer vaccineCenterId) {
         this.vaccineCenterId = vaccineCenterId;
+    }
+
+    public Appointment(Integer vaccineCenterId, Integer patientId, Integer vaccineId, String time) {
+        this.vaccineCenterId = vaccineCenterId;
+        this.patientId = patientId;
+        this.vaccineId = vaccineId;
+        this.time = time;
     }
 }
