@@ -4,6 +4,8 @@ public class VaccineDto {
     private Integer id;
     private String name;
     private String description;
+    private String instruction;
+    private Integer doseRequired;
     private DiseaseDto disease;
 
     public Integer getId() {
@@ -28,6 +30,22 @@ public class VaccineDto {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+
+    public Integer getDoseRequired() {
+        return doseRequired;
+    }
+
+    public void setDoseRequired(Integer doseRequired) {
+        this.doseRequired = doseRequired;
     }
 
     public DiseaseDto getDisease() {

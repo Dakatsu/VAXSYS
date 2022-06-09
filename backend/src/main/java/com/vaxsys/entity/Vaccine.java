@@ -17,15 +17,23 @@ public class Vaccine {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "instruction")
+    private String instruction;
+
+    @Column(name = "dose_required")
+    private Integer doseRequired;
+
     @ManyToOne
     @JoinColumn(name="disease_id", referencedColumnName = "id", nullable=false)
     private Disease disease;
 
     public Vaccine() {}
 
-    public Vaccine(String name, String description, Disease disease) {
+    public Vaccine(String name, String description, String instruction, Integer doseRequired, Disease disease) {
         this.name = name;
         this.description = description;
+        this.instruction = instruction;
+        this.doseRequired = doseRequired;
         this.disease = disease;
     }
 
@@ -47,6 +55,22 @@ public class Vaccine {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+
+    public Integer getDoseRequired() {
+        return doseRequired;
+    }
+
+    public void setDoseRequired(Integer doseRequired) {
+        this.doseRequired = doseRequired;
     }
 
     public Disease getDisease() {

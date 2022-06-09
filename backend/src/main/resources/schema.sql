@@ -33,3 +33,7 @@ CREATE TABLE disease
 
 ALTER TABLE vaccine
     ADD disease_id INTEGER REFERENCES disease (id) ON DELETE CASCADE;
+
+ALTER TABLE vaccine
+    ADD instruction VARCHAR(255),
+    ADD dose_required INTEGER;
