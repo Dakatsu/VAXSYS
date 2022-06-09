@@ -21,7 +21,7 @@ public class AppointmentService {
 
     @Transactional
     public Appointment createAppointment(AppointmentCreationDto request){
-        Appointment appointment = new Appointment(request.getVaccineCenterId(),Util.getCurrentUser().getAccountId(), request.getVaccineId(),request.getTime());
+        Appointment appointment = new Appointment(request.getVaccineCenterId(),Util.getCurrentUser().getAccountId(), request.getVaccineId(),request.getTime(), 1);
         slotRepository.updateStateByVaccineCenterIdAndTime(request.getVaccineCenterId(),request.getTime());
         return appointmentRepository.save(appointment);
     }

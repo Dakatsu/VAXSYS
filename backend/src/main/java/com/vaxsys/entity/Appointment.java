@@ -24,6 +24,9 @@ public class Appointment {
     @Column(name = "time")
     private String time;
 
+    @Column(name = "status")
+    private Integer status;
+
     public Appointment() {
 
     }
@@ -68,10 +71,19 @@ public class Appointment {
         this.vaccineCenterId = vaccineCenterId;
     }
 
-    public Appointment(Integer vaccineCenterId, Integer patientId, Integer vaccineId, String time) {
+    public Appointment(Integer vaccineCenterId, Integer patientId, Integer vaccineId, String time, Integer status) {
         this.vaccineCenterId = vaccineCenterId;
         this.patientId = patientId;
         this.vaccineId = vaccineId;
         this.time = time;
+        this.status = status;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
