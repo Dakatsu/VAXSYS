@@ -63,6 +63,18 @@ public class AdminController {
         return VaccineMapper.INSTANCE.map(vaccineRepository.findByName(name));
     }
 
+    @GetMapping("/vaccine")
+    public Page<VaccineDto> findAllVaccines(Pageable pageable) {
+        Page<Vaccine> vaccinePage = vaccineRepository.findAll(pageable);
+        return new PageImpl<>(VaccineMapper.INSTANCE.map(vaccinePage.getContent()), pageable, vaccinePage.getTotalElements());
+    }
+
+    @PostMapping("/disease")
+    public DiseaseDto createDisease(@RequestBody DiseaseCreationDto diseaseCreationDto) {
+        Disease disease = new Disease(diseaseCreationDto.getName(), diseaseCreationDto.getDescription());
+        return DiseaseMapper.INSTANCE.map(diseaseRepository.save(disease));
+    }
+
     @GetMapping("/disease/{name}")
     public DiseaseDto findDiseaseByName(@PathVariable String name) {
         return DiseaseMapper.INSTANCE.map(diseaseRepository.findByName(name));

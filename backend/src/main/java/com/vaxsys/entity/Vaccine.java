@@ -48,4 +48,12 @@ public class Vaccine {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Disease getDisease() {
+        return disease;
+    }
+
+    public void setDisease(Disease disease) {
+        this.disease = disease;
+    }
 }
