@@ -25,6 +25,9 @@ public class DiseaseService {
     }
 
     public Disease createDisease(DiseaseCreationDto diseaseCreationDto) {
+        if (diseaseRepository.findByName(diseaseCreationDto.getName()) != null) {
+            throw new IllegalArgumentException();
+        }
         Disease disease = new Disease(diseaseCreationDto.getName(), diseaseCreationDto.getDescription());
         return diseaseRepository.save(disease);
     }
