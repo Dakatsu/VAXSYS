@@ -15,7 +15,6 @@ import com.vaxsys.mapper.AccountMapper;
 import com.vaxsys.mapper.DiseaseMapper;
 import com.vaxsys.mapper.VaccineMapper;
 import com.vaxsys.mapper.VaccineCenterMapper;
-import com.vaxsys.mapper.VaccineMapper;
 import com.vaxsys.service.AccountService;
 import com.vaxsys.service.AppointmentService;
 import com.vaxsys.service.DiseaseService;
@@ -25,7 +24,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import com.vaxsys.service.VaccineCenterService;
-import com.vaxsys.service.VaccineService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -119,11 +117,6 @@ public class AdminController {
     public Page<DiseaseDto> findAllDiseases(Pageable pageable) {
         Page<Disease> diseasePage = diseaseService.findAll(pageable);
         return new PageImpl<>(DiseaseMapper.INSTANCE.map(diseasePage.getContent()), pageable, diseasePage.getTotalElements());
-    }
-
-    @PostMapping("/vaccine")
-    public VaccineDto createVaccine(@RequestBody VaccineCreationDto vaccineCreationDto) {
-        return VaccineMapper.INSTANCE.map(vaccineService.createVaccine(vaccineCreationDto));
     }
 
     @PostMapping("/vaccineCenter")
