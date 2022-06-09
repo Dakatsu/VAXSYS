@@ -7,9 +7,9 @@ import com.vaxsys.entity.Vaccine;
 import com.vaxsys.mapper.AccountMapper;
 import com.vaxsys.mapper.DiseaseMapper;
 import com.vaxsys.mapper.VaccineMapper;
-import com.vaxsys.repository.DiseaseRepository;
-import com.vaxsys.repository.VaccineRepository;
 import com.vaxsys.service.AccountService;
+import com.vaxsys.service.DiseaseService;
+import com.vaxsys.service.VaccineService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -26,13 +26,13 @@ import static com.vaxsys.constant.Role.ADMIN_CREATION_ROLES;
 public class AdminController {
 
     private final AccountService accountService;
-    private final VaccineRepository vaccineRepository;
-    private final DiseaseRepository diseaseRepository;
+    private final VaccineService vaccineService;
+    private final DiseaseService diseaseService;
 
-    public AdminController(AccountService accountService, VaccineRepository vaccineRepository, DiseaseRepository diseaseRepository) {
+    public AdminController(AccountService accountService, VaccineService vaccineService, DiseaseService diseaseService) {
         this.accountService = accountService;
-        this.vaccineRepository = vaccineRepository;
-        this.diseaseRepository = diseaseRepository;
+        this.vaccineService = vaccineService;
+        this.diseaseService = diseaseService;
     }
 
     @PostMapping("/account")
@@ -53,36 +53,42 @@ public class AdminController {
     }
 
     @PostMapping("/vaccine")
-    public VaccineDto createVaccine(@RequestBody VaccineCreationDto vaccineCreationDto) {
-        Vaccine vaccine = new Vaccine(vaccineCreationDto.getName(), vaccineCreationDto.getDescription(), vaccineCreationDto.getInstruction(), vaccineCreationDto.getDoseRequired(),  vaccineCreationDto.getDisease());
-        return VaccineMapper.INSTANCE.map(vaccineRepository.save(vaccine));
+    public VaccineDto createVaccine(@RequestBody VaccineCreationDto vaccineCreationDto, HttpServletResponse response) throws IOException {
+        Vaccine vaccine;
+        try {
+            vaccine = vaccineService.createVaccine(vaccineCreationDto);
+        } catch (Exception e) {
+            response.sendError(HttpStatus.FORBIDDEN.value(), "Vaccine with name " + vaccineCreationDto.getName() + " already exists");
+            return null;
+        }
+
+        return VaccineMapper.INSTANCE.map(vaccine);
     }
 
     @GetMapping("/vaccine/{name}")
     public VaccineDto findVaccineByName(@PathVariable String name) {
-        return VaccineMapper.INSTANCE.map(vaccineRepository.findByName(name));
+        return VaccineMapper.INSTANCE.map(vaccineService.findByName(name));
     }
 
     @GetMapping("/vaccine")
     public Page<VaccineDto> findAllVaccines(Pageable pageable) {
-        Page<Vaccine> vaccinePage = vaccineRepository.findAll(pageable);
+        Page<Vaccine> vaccinePage = vaccineService.findAll(pageable);
         return new PageImpl<>(VaccineMapper.INSTANCE.map(vaccinePage.getContent()), pageable, vaccinePage.getTotalElements());
     }
 
     @PostMapping("/disease")
     public DiseaseDto createDisease(@RequestBody DiseaseCreationDto diseaseCreationDto) {
-        Disease disease = new Disease(diseaseCreationDto.getName(), diseaseCreationDto.getDescription());
-        return DiseaseMapper.INSTANCE.map(diseaseRepository.save(disease));
+        return DiseaseMapper.INSTANCE.map(diseaseService.createDisease(diseaseCreationDto));
     }
 
     @GetMapping("/disease/{name}")
     public DiseaseDto findDiseaseByName(@PathVariable String name) {
-        return DiseaseMapper.INSTANCE.map(diseaseRepository.findByName(name));
+        return DiseaseMapper.INSTANCE.map(diseaseService.findByName(name));
     }
 
     @GetMapping("/disease")
     public Page<DiseaseDto> findAllDiseases(Pageable pageable) {
-        Page<Disease> diseasePage = diseaseRepository.findAll(pageable);
+        Page<Disease> diseasePage = diseaseService.findAll(pageable);
         return new PageImpl<>(DiseaseMapper.INSTANCE.map(diseasePage.getContent()), pageable, diseasePage.getTotalElements());
     }
 }

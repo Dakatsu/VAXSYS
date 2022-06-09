@@ -13,12 +13,16 @@ import com.vaxsys.service.VaccineService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/vendor")
@@ -33,8 +37,16 @@ public class VendorController {
     }
 
     @PostMapping("/vaccine")
-    public VaccineDto createVaccine(@RequestBody VaccineCreationDto vaccineCreationDto) {
-        return VaccineMapper.INSTANCE.map(vaccineService.createVaccine(vaccineCreationDto));
+    public VaccineDto createVaccine(@RequestBody VaccineCreationDto vaccineCreationDto, HttpServletResponse response) throws IOException {
+        Vaccine vaccine;
+        try {
+            vaccine = vaccineService.createVaccine(vaccineCreationDto);
+        } catch (Exception e) {
+            response.sendError(HttpStatus.FORBIDDEN.value(), "Vaccine with name " + vaccineCreationDto.getName() + " already exists");
+            return null;
+        }
+
+        return VaccineMapper.INSTANCE.map(vaccine);
     }
 
     @GetMapping("/vaccine/{name}")

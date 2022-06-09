@@ -21,6 +21,9 @@ public class VaccineService {
     }
 
     public Vaccine createVaccine(VaccineCreationDto vaccineCreationDto) {
+        if (vaccineRepository.findByName(vaccineCreationDto.getName()) != null) {
+            throw new IllegalArgumentException();
+        }
         Vaccine vaccine = new Vaccine(vaccineCreationDto.getName(), vaccineCreationDto.getDescription(), vaccineCreationDto.getInstruction(), vaccineCreationDto.getDoseRequired(), vaccineCreationDto.getDisease());
         return vaccineRepository.save(vaccine);
     }
