@@ -1,24 +1,30 @@
 package com.vaxsys.dto;
 
+import com.vaxsys.entity.Slot;
+import com.vaxsys.entity.Vaccine;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class AppointmentCreationDto implements Serializable {
-    private Integer vaccineCenterId;
-    private Integer vaccineId;
-    private String time;
+    private Slot slot;
+    private Vaccine vaccine;
 
-    public Integer getVaccineCenterId() {
-        return vaccineCenterId;
+    public Slot getSlot() {
+        return slot;
     }
 
-    public Integer getVaccineId() {
-        return vaccineId;
+    public void setSlot(Slot slot) {
+        this.slot = slot;
     }
 
-    public String getTime() {
-        return time;
+    public Vaccine getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
     }
 
 }

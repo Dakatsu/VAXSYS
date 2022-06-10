@@ -1,7 +1,10 @@
 package com.vaxsys.service;
 
+import com.vaxsys.constant.Role;
 import com.vaxsys.dto.AppointmentCreationDto;
+import com.vaxsys.entity.Account;
 import com.vaxsys.entity.Appointment;
+import com.vaxsys.repository.AccountRepository;
 import com.vaxsys.repository.AppointmentRepository;
 import com.vaxsys.repository.SlotRepository;
 import com.vaxsys.util.Util;
@@ -18,11 +21,19 @@ public class AppointmentService {
     private  AppointmentRepository appointmentRepository;
     @Autowired
     private SlotRepository slotRepository;
+    @Autowired
+    private AccountService accountService;
 
     @Transactional
     public Appointment createAppointment(AppointmentCreationDto request){
-        Appointment appointment = new Appointment(request.getVaccineCenterId(),Util.getCurrentUser().getAccountId(), request.getVaccineId(),request.getTime(), 1);
-        slotRepository.updateStateByVaccineCenterIdAndTime(request.getVaccineCenterId(),request.getTime());
+        Account patient = accountService.findById(Util.getCurrentUser().getAccountId());
+        // Only let patients book appointments.
+        // TODO: Fix this.
+        //if (!patient.getRole().equals(Role.PATIENT)) {
+            //throw new IllegalArgumentException("Only patients can book appointments, not " + patient.getRole().toString() + ".");
+        //}
+        Appointment appointment = new Appointment(request.getSlot(), patient, request.getVaccine(), 1);
+        slotRepository.updateStateToDisabled(request.getSlot().getId());
         return appointmentRepository.save(appointment);
     }
 

@@ -12,6 +12,10 @@ public interface SlotRepository extends JpaRepository<Slot, Integer> {
     @Query(value = "update Slot set enable = false where vaccine_center_id = ?1 and time = ?2")
     void updateStateByVaccineCenterIdAndTime(Integer vaccineCenterId, String time);
 
+    @Modifying
+    @Query(value = "update Slot set enable = false where id = ?1")
+    void updateStateToDisabled(Integer id);
+
 
     @Query(value = "from Slot where vaccine_center_id = ?1 and enable = true")
     List<Slot> findByVaccine_center_id(Integer vaccine_center_id);

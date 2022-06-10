@@ -13,17 +13,17 @@ public class Appointment {
     @Column(columnDefinition = "serial")
     private Integer id;
 
-    @Column(name = "vaccine_center_id")
-    private Integer vaccineCenterId;
+    @OneToOne
+    @JoinColumn(name="slot_id", referencedColumnName = "id", nullable=false)
+    private Slot slot;
 
-    @Column(name = "patient_id")
-    private Integer patientId;
+    @ManyToOne
+    @JoinColumn(name="patient_id", referencedColumnName = "id", nullable=false)
+    private Account patient;
 
-    @Column(name = "vaccine_id")
-    private Integer vaccineId;
-
-    @Column(name = "time")
-    private String time;
+    @ManyToOne
+    @JoinColumn(name="vaccine_id", referencedColumnName = "id", nullable=false)
+    private Vaccine vaccine;
 
     @Column(name = "status")
     private Integer status;
@@ -40,43 +40,34 @@ public class Appointment {
         this.id = id;
     }
 
-    public String getTime() {
-        return time;
+    public Vaccine getVaccine() {
+        return vaccine;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setVaccine(Vaccine vaccineId) {
+        this.vaccine = vaccine;
     }
 
-    public Integer getVaccineId() {
-        return vaccineId;
+    public Account getPatient() {
+        return patient;
     }
 
-    public void setVaccineId(Integer vaccineId) {
-        this.vaccineId = vaccineId;
+    public void setPatient(Account patient) {
+        this.patient = patient;
     }
 
-    public Integer getPatientId() {
-        return patientId;
+    public Slot getSlot() {
+        return slot;
     }
 
-    public void setPatientId(Integer patientId) {
-        this.patientId = patientId;
+    public void setSlot(Integer vaccineCenterId) {
+        this.slot = slot;
     }
 
-    public Integer getVaccineCenterId() {
-        return vaccineCenterId;
-    }
-
-    public void setVaccineCenterId(Integer vaccineCenterId) {
-        this.vaccineCenterId = vaccineCenterId;
-    }
-
-    public Appointment(Integer vaccineCenterId, Integer patientId, Integer vaccineId, String time, Integer status) {
-        this.vaccineCenterId = vaccineCenterId;
-        this.patientId = patientId;
-        this.vaccineId = vaccineId;
-        this.time = time;
+    public Appointment(Slot slot, Account patient, Vaccine vaccine, Integer status) {
+        this.slot = slot;
+        this.patient = patient;
+        this.vaccine = vaccine;
         this.status = status;
     }
 
