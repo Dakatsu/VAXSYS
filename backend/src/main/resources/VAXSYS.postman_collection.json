@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "a78e22c2-0f93-45f5-94da-ea0f7b9456c6",
+		"_postman_id": "51f181ff-9467-403c-a6b4-a27ec48f5467",
 		"name": "VAXSYS",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "5497424"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -879,7 +878,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"vaccineCenterId\": \"1\",  \"vaccineId\": \"1\", \"time\": \"time1\"}"
+					"raw": "{\"slot\": {\"id\": 1},\"vaccine\": {\"id\": 1}}"
 				},
 				"url": {
 					"raw": "http://localhost:9000/patient/appointment/create",
