@@ -70,3 +70,5 @@ CREATE TABLE vaccine_center
     contact VARCHAR(255),
     CONSTRAINT pk_vaccine_center PRIMARY KEY (id)
 );
+ALTER TABLE slot
+    ADD CONSTRAINT FK_SLOT_ON_VACCINE_CENTER FOREIGN KEY (vaccine_center_id) REFERENCES vaccine_center (id);
