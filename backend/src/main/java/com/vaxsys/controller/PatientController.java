@@ -116,4 +116,10 @@ public class PatientController {
         Page<Disease> diseasePage = diseaseService.findAll(pageable);
         return new PageImpl<>(DiseaseMapper.INSTANCE.map(diseasePage.getContent()), pageable, diseasePage.getTotalElements());
     }
+
+    @GetMapping("/disease/{name}/vaccine")
+    public VaccineDto findVaccineByDiseaseName(@PathVariable String name) {
+        Disease disease = diseaseService.findByName(name);
+        return VaccineMapper.INSTANCE.map(vaccineService.findVaccineByDiseaseId(disease.getId()));
+    }
 }

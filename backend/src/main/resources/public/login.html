@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style1.css">
 </head>
 <body>
-<form action="action_page.html">
+<form>
     <div class="container">
         <h1>Login Here</h1>
         <hr>
@@ -18,7 +18,7 @@
         <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
         <hr>
-        <button onclick="sendLogin()" type="submit" class="registerbtn">Login</button>
+        <button onsubmit="submitLogin('/index2.html','email', 'psw')" type="submit" class="registerbtn">Login</button>
     </div>
     <script type="text/javascript" src="app.js"></script>
 

@@ -1,35 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>VAXSYS</title>
-    </head>
-    <body>
-        <!-- Login Portion -->
-        <h1 style="color:darkred">VAXSYS Login Page</h1>
-        <label for="email">E-mail:</label><br>
-        <input type="email" id="email" name="email"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password">
-        <button onclick="sendLogin()">Log In</button>
-        <p id="result" style="color:green"></p><br>
-        <!-- Add Account Portion -->
-        <h2 style="color:darkred">Admin: Create Account</h2>
-        <label for="firstName">First Name:</label><br>
-        <input type="text" id="firstName" name="firstName"><br>
-        <label for="lastName">Last Name:</label><br>
-        <input type="text" id="lastName" name="lastName"><br>
-        <label for="emailX">E-mail:</label><br>
-        <input type="email" id="emailX" name="emailX"><br>
-        <label for="passwordX">Password:</label><br>
-        <input type="password" id="passwordX" name="passwordX">
-        <label for="role">Role:</label><br>
-        <select name="role" id="role">
-            <option value="NURSE">Nurse</option>
-            <option value="VENDOR">Vendor</option>
-        </select>
-        <button onclick="addAccount()">Add Account</button>
-        <p id="resultX" style="color:green"></p>
-        <!-- Scripts for functions. -->
-        <script type="text/javascript" src="scripts.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>VAXSYS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style >
+    body {
+        background-image: url('images/vaccine.jpeg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        /*text-shadow: 1px 1px 1px #000;*/
+    }
+</style>
+<body>
+<!-- Navbar Section -->
+<nav class="navbar">
+    <div class="navbar__container">
+        <a href="#home" id="navbar__logo">VAXSYS</a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+            <li class="navbar__item">
+                <a href="index.html" class="navbar__links" id="home-page">Home</a>
+            </li>
+
+            <li class="navbar__item">
+                <a href="aboutus.html" class="navbar__links" id="about">About Us</a>
+            </li>
+
+            <li class="navbar__btn">
+                <a href="register.html" class="button" id="register">Register</a>
+            </li>
+            <li class="navbar__btn">
+                <a href="login.html" class="button" id="login">Login</a>
+            </li>
+
+        </ul>
+    </div>
+
+</nav>
+<div class="body__container">
+    <h1 class="main__body"> Welcome to VAXSYS (Vaccination Management System)</h1>
+</div>
+<script src="app.js"> </script>
+</body>
 </html>

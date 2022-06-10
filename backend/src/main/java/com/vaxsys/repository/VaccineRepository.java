@@ -13,4 +13,7 @@ public interface VaccineRepository extends JpaRepository<Vaccine, Integer> {
 
     @Query(value = "select * from vaccine v where v.id not in (select vaccine_id from appointment where patient_id = ?1)",nativeQuery = true)
     List<Vaccine> findAvailableVaccines(Integer patientId);
+    Vaccine findByDisease_Id(int diseaseId);
+
 }
+

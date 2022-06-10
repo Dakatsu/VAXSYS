@@ -31,4 +31,8 @@ public class VaccineService {
     public Page<Vaccine> findAll(Pageable pageable) {
         return vaccineRepository.findAll(pageable);
     }
+
+    public Vaccine findVaccineByDiseaseId(int diseaseId) {
+        return vaccineRepository.findByDisease_Id(diseaseId);
+    }
 }
