@@ -1,0 +1,932 @@
+{
+	"info": {
+		"_postman_id": "a78e22c2-0f93-45f5-94da-ea0f7b9456c6",
+		"name": "VAXSYS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5497424"
+	},
+	"item": [
+		{
+			"name": "Admin Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"vaxsysadmin@gmail.com\", \"password\": \"Soen6471$\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/home/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"home",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin create Nurse account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"firstName\": \"Nurse\", \"lastName\": \"Number 1\", \"email\": \"nurse1@gmail.com\", \"password\": \"123456\", \"role\": \"NURSE\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/admin/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin create Vendor account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"firstName\": \"Vendor\", \"lastName\": \"Number 1\", \"email\": \"vendor1@gmail.com\", \"password\": \"123456\", \"role\": \"VENDOR\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/admin/account",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin createDisease",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Disease1\", \"description\": \"Disease 1\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/admin/disease",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"disease"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin createVaccine",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Vaccine1\",\r\n    \"description\": \"Vaccine 1\",\r\n    \"instruction\": \"Instruction 1\",\r\n    \"doseRequired\": 3,\r\n    \"disease\": {\r\n        \"id\": 1\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/admin/vaccine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"vaccine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin createVaccineCenter",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"VaccineCenter1\", \"address\": \"Vaccine Center 2 Address\", \"contact\": \"4389119834\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/admin/vaccineCenter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"vaccineCenter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin getAllVaccine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/admin/vaccine?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"vaccine"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin getVaccineByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/admin/vaccine/Vaccine1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"vaccine",
+						"Vaccine1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin getAllDisease",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/admin/disease?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"disease"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin getDiseaseByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/admin/disease/Disease1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"disease",
+						"Disease1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin findAllAppointment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/admin/appointment/findAll?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"appointment",
+						"findAll"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"vendor2@gmail.com\", \"password\": \"123456\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/home/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"home",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor createDisease",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Disease3\", \"description\": \"Disease 3\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/vendor/disease",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"vendor",
+						"disease"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor createVaccine",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Vaccine1\",\r\n    \"description\": \"Vaccine 1\",\r\n    \"instruction\": \"Instruction 1\",\r\n    \"doseRequired\": 3,\r\n    \"disease\": {\r\n        \"id\": 1\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/vendor/vaccine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"vendor",
+						"vaccine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor getAllVaccine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/vendor/vaccine?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"vendor",
+						"vaccine"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor getVaccineByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/vendor/vaccine/Vaccine1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"vendor",
+						"vaccine",
+						"Vaccine1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor getAllDisease",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/vendor/disease?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"vendor",
+						"disease"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vendor getDiseaseByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/vendor/disease/Disease1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"vendor",
+						"disease",
+						"Disease1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nurse Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"nurse1@gmail.com\", \"password\": \"123456\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/home/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"home",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nurse getAllVaccine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/admin/vaccine?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"admin",
+						"vaccine"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nurse getVaccineByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/nurse/vaccine/Vaccine1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"nurse",
+						"vaccine",
+						"Vaccine1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nurse getAllDisease",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/nurse/disease?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"nurse",
+						"disease"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nurse getDiseaseByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/nurse/disease/Disease1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"nurse",
+						"disease",
+						"Disease1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Nurse findAllAppointment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/nurse/appointment/findAll?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"nurse",
+						"appointment",
+						"findAll"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"patient1@gmail.com\", \"password\": \"123456\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/home/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"home",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\": \"patient1@gmail.com\", \"password\": \"123456\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/home/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"home",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient getAllVaccine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/patient/vaccine?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"patient",
+						"vaccine"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient getVaccineByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/patient/vaccine/Vaccine1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"patient",
+						"vaccine",
+						"Vaccine1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient getAllDisease",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/patient/disease?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"patient",
+						"disease"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient getDiseaseByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/patient/disease/Disease1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"patient",
+						"disease",
+						"Disease1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient findAvailableVaccines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/patient/vaccine/findAvailableVaccines",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"patient",
+						"vaccine",
+						"findAvailableVaccines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient findSlotByVaccineCenterId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/patient/appointment/findSlotByVaccineCenterId/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"patient",
+						"appointment",
+						"findSlotByVaccineCenterId",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient createAppointment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"vaccineCenterId\": \"1\",  \"vaccineId\": \"1\", \"time\": \"time1\"}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/patient/appointment/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"patient",
+						"appointment",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient findAllAppointment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/patient/appointment/findAll?page=0&size=20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"patient",
+						"appointment",
+						"findAll"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
