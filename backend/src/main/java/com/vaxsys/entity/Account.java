@@ -1,8 +1,6 @@
 package com.vaxsys.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "account")
@@ -27,6 +25,9 @@ public class Account {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name="idNumber")
+    private String idNumber;
 
     @OneToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
@@ -89,13 +90,18 @@ public class Account {
         this.role = role;
     }
 
-    public Account(String firstName, String lastName, String email, String password, Role role) {
+    public String getIdNumber() {return idNumber;}
+
+    public void setIdNumber(String idNumber) {this.idNumber = idNumber ;}
+
+    public Account(String firstName, String lastName, String email, String password, Role role, String idNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = firstName + " " + lastName;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.idNumber = idNumber;
     }
 
     public Account() {

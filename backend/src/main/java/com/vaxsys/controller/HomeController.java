@@ -2,10 +2,13 @@ package com.vaxsys.controller;
 
 import com.vaxsys.dto.AccountDto;
 import com.vaxsys.dto.LoginDto;
+import com.vaxsys.dto.PatientCreationDto;
 import com.vaxsys.entity.Account;
 import com.vaxsys.mapper.AccountMapper;
 import com.vaxsys.dto.AccountCreationDto;
 import com.vaxsys.service.AccountService;
+import com.vaxsys.service.PatientVerificationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +26,9 @@ import static com.vaxsys.constant.Role.PATIENT;
 public class HomeController {
 
     private final AccountService accountService;
+
+    @Autowired
+    private PatientVerificationService patientVerificationService;
 
     public HomeController(AccountService accountService) {
         this.accountService = accountService;
@@ -43,11 +49,11 @@ public class HomeController {
     }
 
     @PostMapping("/register")
-    public AccountDto register(@RequestBody AccountCreationDto request,
+    public AccountDto register(@RequestBody PatientCreationDto request,
                                HttpServletResponse response) throws IOException {
         Account account;
         try {
-            account = accountService.createAccount(request, PATIENT.map());
+            account = patientVerificationService.createPatientAccountWithID(request, PATIENT.map());
         } catch (Exception e) {
             response.sendError(HttpStatus.FORBIDDEN.value(), e.getMessage());
             return null;

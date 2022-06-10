@@ -54,7 +54,7 @@ public class AccountService {
 
         String encodedPassword = bCryptPasswordEncoder.encode(request.getPassword());
 
-        account = new Account(request.getFirstName(), request.getLastName(), request.getEmail(), encodedPassword, role);
+        account = new Account(request.getFirstName(), request.getLastName(), request.getEmail(), encodedPassword, role,null);
 
         accountRepository.save(account);
         return account;
