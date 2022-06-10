@@ -11,6 +11,7 @@ import java.util.List;
 public interface SlotMapper {
     SlotMapper INSTANCE = Mappers.getMapper(SlotMapper.class);
 
+    SlotDto map(Slot source);
     List<SlotDto> map(List<Slot> source);
 
 }
