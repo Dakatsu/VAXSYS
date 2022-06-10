@@ -7,23 +7,13 @@ import com.vaxsys.dto.VaccineCenterDto;
 import com.vaxsys.dto.VaccineCreationDto;
 import com.vaxsys.dto.VaccineDto;
 import com.vaxsys.dto.*;
-import com.vaxsys.entity.Account;
-import com.vaxsys.entity.Appointment;
-import com.vaxsys.entity.Disease;
-import com.vaxsys.entity.Vaccine;
-import com.vaxsys.mapper.AccountMapper;
-import com.vaxsys.mapper.DiseaseMapper;
-import com.vaxsys.mapper.VaccineMapper;
-import com.vaxsys.mapper.VaccineCenterMapper;
-import com.vaxsys.service.AccountService;
-import com.vaxsys.service.AppointmentService;
-import com.vaxsys.service.DiseaseService;
-import com.vaxsys.service.VaccineService;
+import com.vaxsys.entity.*;
+import com.vaxsys.mapper.*;
+import com.vaxsys.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import com.vaxsys.service.VaccineCenterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,15 +30,17 @@ public class AdminController {
     private final VaccineService vaccineService;
     private final DiseaseService diseaseService;
     private final VaccineCenterService vaccineCenterService;
+    private final SlotService slotService;
 
     @Autowired
     private AppointmentService appointmentService;
 
-    public AdminController(AccountService accountService, VaccineService vaccineService, DiseaseService diseaseService, VaccineCenterService vaccineCenterService) {
+    public AdminController(AccountService accountService, VaccineService vaccineService, DiseaseService diseaseService, VaccineCenterService vaccineCenterService, SlotService slotService) {
         this.accountService = accountService;
         this.vaccineService = vaccineService;
         this.diseaseService = diseaseService;
         this.vaccineCenterService = vaccineCenterService;
+        this.slotService = slotService;
     }
 
     @PostMapping("/account")
@@ -122,5 +114,17 @@ public class AdminController {
     @PostMapping("/vaccineCenter")
     public VaccineCenterDto createVaccine(@RequestBody VaccineCenterCreationDto vaccineCenterCreationDto) {
         return VaccineCenterMapper.INSTANCE.map(vaccineCenterService.createVaccineCenter(vaccineCenterCreationDto));
+    }
+
+    @PostMapping("/slot")
+    public SlotDto createSlot(@RequestBody SlotCreationDto slotCreationDto, HttpServletResponse response) throws IOException {
+        Slot slot;
+        try {
+            slot = slotService.createSlot(slotCreationDto);
+        } catch(Exception e) {
+            response.sendError(HttpStatus.FORBIDDEN.value(), "Unable to create slot: " + e.getMessage());
+            return null;
+        }
+        return SlotMapper.INSTANCE.map(slot);
     }
 }
