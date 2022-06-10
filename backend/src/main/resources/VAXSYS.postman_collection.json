@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "51f181ff-9467-403c-a6b4-a27ec48f5467",
+		"_postman_id": "bd25d469-879c-4745-af0a-5305184826d1",
 		"name": "VAXSYS",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21414372"
 	},
 	"item": [
 		{
@@ -46,7 +47,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"firstName\": \"Nurse\", \"lastName\": \"Number 1\", \"email\": \"nurse1@gmail.com\", \"password\": \"123456\", \"role\": \"NURSE\"}"
+					"raw": "{\"firstName\": \"Nurse2\", \"lastName\": \"Number 2\", \"email\": \"nurse2@gmail.com\", \"password\": \"123456\", \"role\": \"NURSE\"}"
 				},
 				"url": {
 					"raw": "http://localhost:9000/admin/account",
@@ -664,7 +665,7 @@
 			"response": []
 		},
 		{
-			"name": "Patient Register",
+			"name": "Patient Register with ID verification",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -675,10 +676,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"email\": \"patient1@gmail.com\", \"password\": \"123456\"}"
+					"raw": "{\"firstName\": \"Patient\",\"lastName\":\"Number 4\",\"email\": \"patient4@gmail.com\", \"password\": \"123456\", \"idNumber\" : \"12345678\" }"
 				},
 				"url": {
-					"raw": "http://localhost:9000/home/login",
+					"raw": "http://localhost:9000/home/register",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -686,7 +687,7 @@
 					"port": "9000",
 					"path": [
 						"home",
-						"login"
+						"register"
 					]
 				}
 			},
@@ -922,6 +923,28 @@
 							"key": "size",
 							"value": "20"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Vaccine corresponding to Disease",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/patient/disease/Disease1/vaccine",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"patient",
+						"disease",
+						"Disease1",
+						"vaccine"
 					]
 				}
 			},
