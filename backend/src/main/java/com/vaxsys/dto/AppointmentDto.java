@@ -1,13 +1,16 @@
 package com.vaxsys.dto;
 
+import com.vaxsys.entity.Account;
+import com.vaxsys.entity.Slot;
+import com.vaxsys.entity.Vaccine;
+
 import java.time.LocalDate;
 
 public class AppointmentDto {
     private Integer id;
-    private Integer vaccineCenterId;
-    private Integer patientId;
-    private Integer vaccineId;
-    private String time;
+    private Slot slot;
+    private Account patient;
+    private Vaccine vaccine;
 
     public Integer getId() {
         return id;
@@ -17,35 +20,27 @@ public class AppointmentDto {
         this.id = id;
     }
 
-    public Integer getVaccineCenterId() {
-        return vaccineCenterId;
+    public Slot getSlot() {
+        return slot;
     }
 
-    public void setVaccineCenterId(Integer vaccineCenterId) {
-        this.vaccineCenterId = vaccineCenterId;
+    public void setSlot(Slot slot) {
+        this.slot = slot;
     }
 
-    public Integer getPatientId() {
-        return patientId;
+    public Account getPatient() {
+        return patient;
     }
 
-    public void setPatientId(Integer patientId) {
-        this.patientId = patientId;
+    public void setPatient(Account patient) {
+        this.patient = patient;
     }
 
-    public Integer getVaccineId() {
-        return vaccineId;
+    public Vaccine getVaccine() {
+        return vaccine;
     }
 
-    public void setVaccineId(Integer vaccineId) {
-        this.vaccineId = vaccineId;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
     }
 }

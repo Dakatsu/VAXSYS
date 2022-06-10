@@ -24,6 +24,7 @@ public class Slot {
     public Slot(String time, VaccineCenter vaccineCenter) {
         setTime(time);
         setVaccineCenter(vaccineCenter);
+        setEnable(true);
     }
 
     public Slot() {
