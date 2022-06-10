@@ -665,6 +665,35 @@
 			"response": []
 		},
 		{
+			"name": "Nurse create slot at Vaccine Center",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"time\": \"2022-07-04 20:30\",\"vaccineCenter\": {\"id\": 1}}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/nurse/slot",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"nurse",
+						"slot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Patient Register with ID verification",
 			"request": {
 				"method": "POST",
