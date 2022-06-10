@@ -14,8 +14,21 @@ public class Slot {
     @Column(name = "time")
     private String time;
 
-    @Column(name = "vaccine_center_id")
-    private Integer vaccine_center_id;
+    /**
+     * The Vaccine Center which has this open appointment slot.
+     */
+    @ManyToOne
+    @JoinColumn(name="vaccine_center_id", referencedColumnName = "id", nullable=false)
+    private VaccineCenter vaccineCenter;
+
+    public Slot(String time, VaccineCenter vaccineCenter) {
+        setTime(time);
+        setVaccineCenter(vaccineCenter);
+    }
+
+    public Slot() {
+        this(null, null);
+    }
 
     @Column(name = "enable")
     private boolean enable;
@@ -36,12 +49,12 @@ public class Slot {
         this.time = time;
     }
 
-    public Integer getVaccine_center_id() {
-        return vaccine_center_id;
+    public VaccineCenter getVaccineCenter() {
+        return vaccineCenter;
     }
 
-    public void setVaccine_center_id(Integer vaccine_center_id) {
-        this.vaccine_center_id = vaccine_center_id;
+    public void setVaccineCenter(VaccineCenter vaccineCenter) {
+        this.vaccineCenter = vaccineCenter;
     }
 
     public boolean isEnable() {
