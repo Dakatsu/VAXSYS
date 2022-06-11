@@ -15,3 +15,7 @@ p {
   font-family: courier;
   font-size: 100%;
 }
+
+table, th, td {
+  border: 2px solid;
+}

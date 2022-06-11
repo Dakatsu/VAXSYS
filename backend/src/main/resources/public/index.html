@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
     <title>VAXSYS</title>
-  <link rel="stylesheet" href="style.css">
 </head>
-<style >
-    body {
-        background-image: url('images/vaccine.jpeg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        /*text-shadow: 1px 1px 1px #000;*/
-    }
-</style>
 <body>
-<!-- Navbar Section -->
-<nav class="navbar">
-    <div class="navbar__container">
-        <a href="#home" id="navbar__logo">VAXSYS</a>
-        <div class="navbar__toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="navbar__menu">
-            <li class="navbar__item">
-                <a href="index.html" class="navbar__links" id="home-page">Home</a>
-            </li>
-
-            <li class="navbar__item">
-                <a href="aboutus.html" class="navbar__links" id="about">About Us</a>
-            </li>
-
-            <li class="navbar__btn">
-                <a href="register.html" class="button" id="register">Register</a>
-            </li>
-            <li class="navbar__btn">
-                <a href="login.html" class="button" id="login">Login</a>
-            </li>
-
-        </ul>
-    </div>
-
-</nav>
-<div class="body__container">
-    <h1 class="main__body"> Welcome to VAXSYS (Vaccination Management System)</h1>
-</div>
-<script src="app.js"> </script>
+<!-- Scripts for functions. -->
+<script type="text/javascript" src="scripts.js"></script>
+<h1>VAXSYS Login Page</h1>
+<table>
+    <tr>
+        <th>
+            <h2>Log In</h2>
+        </th>
+        <th>
+            <h2>New Patient Account</h2>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <label for="loginEmail">E-mail:</label><br>
+            <input type="email" id="loginEmail" name="loginEmail"><br>
+            <label for="loginPassword">Password:</label><br>
+            <input type="password" id="loginPassword" name="loginPassword"><br>
+            <button onclick="submitLogin('/home/login', 'login', 'loginOutput')">Log In</button><br>
+            <p id="loginOutput"></p><br>
+        </th>
+        <th>
+            <label for="registerFirstName">First Name:</label><br>
+            <input type="text" id="registerFirstName" name="registerFirstName"><br>
+            <label for="registerLastName">Last Name:</label><br>
+            <input type="text" id="registerLastName" name="registerLastName"><br>
+            <label for="registerEmail">E-mail:</label><br>
+            <input type="email" id="registerEmail" name="registerEmail"><br>
+            <label for="registerPassword">Password:</label><br>
+            <input type="password" id="registerPassword" name="registerPassword"><br>
+            <button onclick="submitRegistration('/home/register', 'register', 'registerOutput')">Sign Up</button><br>
+            <p id="registerOutput"></p><br>
+        </th>
+    </tr>
+</table>
+<table>
+    <tr>
+        <th><a href="/admin/index.html">Admin</a></th>
+        <th><a href="/nurse/index.html">Nurse</a></th>
+        <th><a href="/patient/index.html">Patient</a></th>
+        <th><a href="/vendor/index.html">Vendor</a></th>
+    </tr>
+</table>
 </body>
 </html>
