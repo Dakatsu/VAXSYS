@@ -15,6 +15,6 @@ Once running the program in the IDE, wait for a line similar to this to appear i
 
   `com.vaxsys.Application                   : Started Application in X.XXX seconds`
   
-The program can then be accessed from a web browser by typing in *localhost:9000/index.html*. It can also be accessed from another computer or phone by replacing *localhost* with an IP address.
+There are numerous HTTP API calls that can be made to the system. These are documented in a JSON file meant to be run in Postman, a simple application to send and receive HTTP queries. This file is located at [*/src/main/resources/VAXSYS.postman_collection.json*](https://github.com/KyleTaylorLange/VAXSYS/blob/master/backend/src/main/resources/VAXSYS.postman_collection.json). Many of these queries are also documented via cURL commands in the [Wiki page](https://github.com/KyleTaylorLange/VAXSYS/wiki).
 
-Alternatively, the program's API is exposed via the HTTP requests documented in this repository's wiki.
+Alternatively, there is a partially functional web interface that can be accessed by *localhost:9000/index.html* once the program is running. It can also be accessed from another computer or phone by replacing *localhost* with an IP address.
